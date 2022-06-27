@@ -1,46 +1,47 @@
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <meta name="csrf-token" content="{{ csrf_token() }}">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="csrf-token" content="{{ csrf_token() }}">
 
-        <title>{{ config('app.name', 'Laravel') }}</title>
+  <title>{{ config('app.name', 'Laravel') }}</title>
 
-        <!-- Fonts -->
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap">
+  <!-- Fonts -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap">
 
-        <!-- Styles -->
-        <link rel="stylesheet" href="{{ mix('css/app.css') }}">
+  <!-- Styles -->
+  <link rel="stylesheet" href="{{ mix('css/app.css') }}">
 
-        @livewireStyles
+  @livewireStyles
 
-        <!-- Scripts -->
-        <script src="{{ mix('js/app.js') }}" defer></script>
-    </head>
-    <body class="font-sans antialiased">
-        <x-jet-banner />
+  <!-- Scripts -->
+  <script src="{{ mix('js/app.js') }}" defer></script>
+</head>
+<body class="font-sans antialiased">
 
-        <div class="min-h-screen bg-gray-100">
-            @livewire('navigation-menu')
+  {{-- {{ $slot }} --}}
 
-            <!-- Page Heading -->
-            @if (isset($header))
-                <header class="bg-white shadow">
-                    <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
-                        {{ $header }}
-                    </div>
-                </header>
-            @endif
+app layout
 
-            <!-- Page Content -->
-            <main>
-                {{ $slot }}
-            </main>
-        </div>
+  {{-- <!-- JAVASCRIPT -->
+  <script src="/assets/libs/jquery/jquery.min.js"></script>
+  <script src="/assets/libs/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="/assets/libs/metismenu/metisMenu.min.js"></script>
+  <script src="/assets/libs/simplebar/simplebar.min.js"></script>
+  <script src="/assets/libs/node-waves/waves.min.js"></script>
+  <script src="/assets/libs/waypoints/lib/jquery.waypoints.min.js"></script>
+  <script src="/assets/libs/jquery.counterup/jquery.counterup.min.js"></script>
 
-        @stack('modals')
+  <!-- apexcharts -->
+  <script src="/assets/libs/apexcharts/apexcharts.min.js"></script>
 
-        @livewireScripts
-    </body>
+  <script src="/assets/js/pages/dashboard.init.js"></script>
+
+  <!-- App js -->
+  <script src="/assets/js/app.js"></script> --}}
+  @stack('modals')
+
+  @livewireScripts
+</body>
 </html>

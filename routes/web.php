@@ -1,6 +1,8 @@
 <?php
-
 use Illuminate\Support\Facades\Route;
+
+use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Livewire\Admin\Dashboard;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,7 +24,5 @@ Route::middleware([
     config('jetstream.auth_session'),
     'verified'
 ])->group(function () {
-    Route::get('/dashboard', function () {
-        return view('dashboard');
-    })->name('dashboard');
+    Route::get('/dashboard', Dashboard::class)->name('dashboard');
 });
