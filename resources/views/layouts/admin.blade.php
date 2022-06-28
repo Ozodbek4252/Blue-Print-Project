@@ -12,9 +12,11 @@
 
     <div class="main-content">
       <div class="page-content">
+
         {{-- Main Content Beginning --}}
         {{ $slot }}
         {{-- Main Content End --}}
+        
       </div>
       @include('components.admin.footer')
     </div>
