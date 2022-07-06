@@ -149,7 +149,7 @@
             </div>
             <div class="col-sm-4">
               <div class="mt-4 mt-sm-0">
-                <img src="assets/images/setup-analytics-amico.svg" class="img-fluid" alt="">
+                <img src="/assets/images/setup-analytics-amico.svg" class="img-fluid" alt="">
               </div>
             </div>
           </div>
@@ -278,7 +278,7 @@
               <table class="table table-borderless table-centered table-nowrap">
                 <tbody>
                   <tr>
-                    <td style="width: 20px;"><img src="assets/images/users/avatar-4.jpg"
+                    <td style="width: 20px;"><img src="/assets/images/users/avatar-4.jpg"
                         class="avatar-xs rounded-circle " alt="..."></td>
                     <td>
                       <h6 class="font-size-15 mb-1 fw-normal">Glenn Holden</h6>
@@ -289,7 +289,7 @@
                         data-feather="trending-up"></i>$250.00</td>
                   </tr>
                   <tr>
-                    <td><img src="assets/images/users/avatar-5.jpg" class="avatar-xs rounded-circle " alt="...">
+                    <td><img src="/assets/images/users/avatar-5.jpg" class="avatar-xs rounded-circle " alt="...">
                     </td>
                     <td>
                       <h6 class="font-size-15 mb-1 fw-normal">Lolita Hamill</h6>
@@ -300,7 +300,7 @@
                         data-feather="trending-down"></i>$110.00</td>
                   </tr>
                   <tr>
-                    <td><img src="assets/images/users/avatar-6.jpg" class="avatar-xs rounded-circle " alt="...">
+                    <td><img src="/assets/images/users/avatar-6.jpg" class="avatar-xs rounded-circle " alt="...">
                     </td>
                     <td>
                       <h6 class="font-size-15 mb-1 fw-normal">Robert Mercer</h6>
@@ -312,7 +312,7 @@
                         data-feather="trending-up"></i>$420.00</td>
                   </tr>
                   <tr>
-                    <td><img src="assets/images/users/avatar-7.jpg" class="avatar-xs rounded-circle " alt="...">
+                    <td><img src="/assets/images/users/avatar-7.jpg" class="avatar-xs rounded-circle " alt="...">
                     </td>
                     <td>
                       <h6 class="font-size-15 mb-1 fw-normal">Marie Kim</h6>
@@ -323,7 +323,7 @@
                         data-feather="trending-down"></i>$120.00</td>
                   </tr>
                   <tr>
-                    <td><img src="assets/images/users/avatar-8.jpg" class="avatar-xs rounded-circle " alt="...">
+                    <td><img src="/assets/images/users/avatar-8.jpg" class="avatar-xs rounded-circle " alt="...">
                     </td>
                     <td>
                       <h6 class="font-size-15 mb-1 fw-normal">Sonya Henshaw</h6>
@@ -334,7 +334,7 @@
                         data-feather="trending-up"></i>$112.00</td>
                   </tr>
                   <tr>
-                    <td><img src="assets/images/users/avatar-2.jpg" class="avatar-xs rounded-circle " alt="...">
+                    <td><img src="/assets/images/users/avatar-2.jpg" class="avatar-xs rounded-circle " alt="...">
                     </td>
                     <td>
                       <h6 class="font-size-15 mb-1 fw-normal">Marie Kim</h6>
@@ -345,7 +345,7 @@
                         data-feather="trending-down"></i>$120.00</td>
                   </tr>
                   <tr>
-                    <td><img src="assets/images/users/avatar-1.jpg" class="avatar-xs rounded-circle " alt="...">
+                    <td><img src="/assets/images/users/avatar-1.jpg" class="avatar-xs rounded-circle " alt="...">
                     </td>
                     <td>
                       <h6 class="font-size-15 mb-1 fw-normal">Sonya Henshaw</h6>

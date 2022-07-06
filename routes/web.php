@@ -2,6 +2,7 @@
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\Admin\UserController;
 use App\Http\Livewire\Admin\Dashboard;
 
 /*
@@ -15,14 +16,27 @@ use App\Http\Livewire\Admin\Dashboard;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Front Routes
+Route::get('/', function(){
+    return view('front.welcome');
+})->name('home');
 
+// Admin Routes
 Route::middleware([
     'auth:sanctum',
     config('jetstream.auth_session'),
     'verified'
 ])->group(function () {
-    Route::get('/dashboard', Dashboard::class)->name('dashboard');
+
+    Route::middleware(['is_admin'])->group(function(){
+        Route::prefix('admin')->group(function () {
+            Route::name('admin.')->group(function () {
+                Route::get('/dashboard', Dashboard::class)->name('dashboard');
+                Route::get('/users', [UserController::class, 'index'])->name('users');
+            });
+        });
+    });
+
 });
+
+

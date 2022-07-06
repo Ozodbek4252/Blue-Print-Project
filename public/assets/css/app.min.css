@@ -5060,3 +5060,12 @@ table.dataTable.dtr-inline.collapsed > tbody > tr > td.dtr-control:before {
 }
 
 /*# sourceMappingURL=app.min.css.map */
+
+.table-responsive > nav > div {
+    display: block !important;
+    visibility: visible !important;
+}
+
+.table-responsive > nav > .justify-between {
+    display:none !important;
+}

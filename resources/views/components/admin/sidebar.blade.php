@@ -2,21 +2,21 @@
 
   <!-- LOGO -->
   <div class="navbar-brand-box" style="height: 70px; display: flex; justify-content: flex-start; align-items: center;">
-    <a href="{{Route('dashboard')}}" class="logo logo-dark">
+    <a href="{{ Route('admin.dashboard') }}" class="logo logo-dark">
       {{-- <span class="logo-sm">
-        <img src="assets/images/logo-sm.png" alt="" height="22" style="height: 22px;">
+        <img src="/assets/images/logo-sm.png" alt="" height="22" style="height: 22px;">
       </span> --}}
       <span class="logo-lg">
-        <img src="assets/images/logo-dark.png" alt="" height="20" style="height: 20px;">
+        <img src="/assets/images/logo-dark.png" alt="" height="20" style="height: 20px;">
       </span>
     </a>
 
     <a href="index.html" class="logo logo-light">
       <span class="logo-sm">
-        <img src="assets/images/logo-sm.png" alt="" height="22" style="height: 22px;">
+        <img src="/assets/images/logo-sm.png" alt="" height="22" style="height: 22px;">
       </span>
       <span class="logo-lg">
-        <img src="assets/images/logo-light.png" alt="" height="20" style="height: 20px;">
+        <img src="/assets/images/logo-light.png" alt="" height="20" style="height: 20px;">
       </span>
     </a>
   </div>
@@ -34,7 +34,7 @@
         <li class="menu-title">Menu</li>
 
         <li>
-          <a href="{{Route('dashboard')}}">
+          <a href="{{ Route('admin.dashboard') }}">
             <i class="uil-home-alt"></i><span class="badge rounded-pill bg-primary float-end">01</span>
             <span>Dashboard</span>
           </a>
@@ -42,11 +42,23 @@
 
         <li class="menu-title">Apps</li>
 
+        {{-- <li>
+          <a href="{{ Route('admin.users') }}" class="waves-effect">
+            <i class="uil-users-alt"></i>
+            <span></span>
+          </a>
+        </li> --}}
+
         <li>
-          <a href="calendar.html" class="waves-effect">
+          <a href="javascript: void(0);" class="has-arrow waves-effect">
             <i class="uil-users-alt"></i>
             <span>Users</span>
           </a>
+          <ul class="sub-menu" aria-expanded="false">
+            <li><a href="{{ Route('admin.users') }}">List</a></li>
+            <li><a href="ecommerce-product-detail.html">Product Detail</a></li>
+            <li><a href="ecommerce-orders.html">Orders</a></li>
+          </ul>
         </li>
 
         <li>

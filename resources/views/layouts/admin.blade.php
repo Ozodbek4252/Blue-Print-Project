@@ -14,7 +14,8 @@
       <div class="page-content">
 
         {{-- Main Content Beginning --}}
-        {{ $slot }}
+        {{ isset($slot) ? $slot : ''}}
+        @yield('content')
         {{-- Main Content End --}}
         
       </div>
