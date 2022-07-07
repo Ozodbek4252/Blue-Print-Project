@@ -132,7 +132,7 @@
         <button type="button" class="btn header-item noti-icon waves-effect" id="page-header-notifications-dropdown"
           data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           <i class="uil-bell"></i>
-          <span class="badge bg-danger rounded-pill">3</span>
+          @if(count(auth()->user()->unreadnotifications)>0)<span class="badge bg-danger rounded-pill">{{count(auth()->user()->unreadnotifications)}}</span>@endif
         </button>
         <div class="dropdown-menu dropdown-menu-lg dropdown-menu-end p-0"
           aria-labelledby="page-header-notifications-dropdown">
@@ -142,7 +142,7 @@
                 <h5 class="m-0 font-size-16"> Notifications </h5>
               </div>
               <div class="col-auto">
-                <a href="index.html#!" class="small"> Mark all as read</a>
+                <a href="{{ Route('admin.markallasread') }}" class="small"> Mark all as read</a>
               </div>
             </div>
           </div>
@@ -215,7 +215,7 @@
           </div>
           <div class="p-2 border-top">
             <div class="d-grid">
-              <a class="btn btn-sm btn-link font-size-14 text-center" href="javascript:void(0)">
+              <a class="btn btn-sm btn-link font-size-14 text-center" href="{{ Route('admin.notifications') }}">
                 <i class="uil-arrow-circle-right me-1"></i> View More..
               </a>
             </div>

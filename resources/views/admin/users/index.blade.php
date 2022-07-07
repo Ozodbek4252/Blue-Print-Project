@@ -17,6 +17,7 @@
                   <th>#</th>
                   <th>First Name</th>
                   <th>Last Name</th>
+                  <th>Phone</th>
                   <th>Email</th>
                 </tr>
               </thead>
@@ -27,6 +28,7 @@
                       <th scope="row">{{ ++$num }}</th>
                       <td>{{ $user->name }}</td>
                       <td>{{ $user->last_name }}</td>
+                      <td><a href="tel:{{ $user->phone }}">{{ $user->phone }}</a></td>
                       <td>{{ $user->email }}</td>
                     </tr>
                   @endif
