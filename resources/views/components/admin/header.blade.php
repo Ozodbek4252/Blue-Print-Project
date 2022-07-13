@@ -132,7 +132,9 @@
         <button type="button" class="btn header-item noti-icon waves-effect" id="page-header-notifications-dropdown"
           data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           <i class="uil-bell"></i>
-          @if(count(auth()->user()->unreadnotifications)>0)<span class="badge bg-danger rounded-pill">{{count(auth()->user()->unreadnotifications)}}</span>@endif
+          @if (count(auth()->user()->unreadnotifications) > 0)
+            <span class="badge bg-danger rounded-pill">{{ count(auth()->user()->unreadnotifications) }}</span>
+          @endif
         </button>
         <div class="dropdown-menu dropdown-menu-lg dropdown-menu-end p-0"
           aria-labelledby="page-header-notifications-dropdown">
@@ -225,15 +227,18 @@
 
       <div class="dropdown d-inline-block">
         <button type="button" class="btn header-item waves-effect" id="page-header-user-dropdown"
-          data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
+          style="display: flex; flex-direction: column; justify-content: center; align-items: center;">
           <img class="rounded-circle header-profile-user" src="/assets/images/users/avatar-4.jpg"
             alt="Header Avatar">
-          <span class="d-none d-xl-inline-block ms-1 fw-medium font-size-15">Marcus</span>
-          <i class="uil-angle-down d-none d-xl-inline-block font-size-15"></i>
+          <div>
+            <span class="d-none d-xl-inline-block ms-1 fw-medium font-size-15">Marcus</span>
+            <i class="uil-angle-down d-none d-xl-inline-block font-size-15"></i>
+          </div>
         </button>
         <div class="dropdown-menu dropdown-menu-end">
           <!-- item-->
-          <a class="dropdown-item" href="{{Route('admin.profile')}}"><i
+          <a class="dropdown-item" href="{{ Route('admin.profile') }}"><i
               class="uil uil-user-circle font-size-18 align-middle text-muted me-1"></i> <span
               class="align-middle">View Profile</span></a>
           <a class="dropdown-item" href="index.html#"><i
@@ -253,12 +258,6 @@
                 class="align-middle">Sign out</span></a>
           </form>
         </div>
-      </div>
-
-      <div class="dropdown d-inline-block">
-        <button type="button" class="btn header-item noti-icon right-bar-toggle waves-effect">
-          <i class="uil-cog"></i>
-        </button>
       </div>
 
     </div>
