@@ -1,48 +1,89 @@
-<x-guest-layout>
-    <x-jet-authentication-card>
-        <x-slot name="logo">
-            <x-jet-authentication-card-logo />
-        </x-slot>
+@include('components.admin.links')
+<div class="account-pages my-5 pt-sm-5">
+  <div class="container">
+    <div class="row align-items-center justify-content-center">
+      <div class="col-md-8 col-lg-6 col-xl-5">
+        <div class="card">
 
-        <x-jet-validation-errors class="mb-4" />
-
-        @if (session('status'))
-            <div class="mb-4 font-medium text-sm text-green-600">
-                {{ session('status') }}
+          <div class="card-body p-4">
+            <div class="text-center mt-2">
+              <h5 class="text-primary">Welcome Back !</h5>
+              <p class="text-muted">Sign in to continue to {{config('app.name')}}.</p>
             </div>
-        @endif
+            <div class="p-2 mt-4">
+              <form method="POST" action="{{ route('login') }}">
+                @csrf
 
-        <form method="POST" action="{{ route('login') }}">
-            @csrf
+                <div class="mb-3">
+                  <label class="form-label" for="username">Email</label>
+                  <input name="email" type="text" class="form-control" id="username" placeholder="Enter email">
+                </div>
 
-            <div>
-                <x-jet-label for="email" value="{{ __('Email') }}" />
-                <x-jet-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autofocus />
+                <div class="mb-3">
+                  <div class="float-end">
+                    <a href="auth-recoverpw.html" class="text-muted">Forgot password?</a>
+                  </div>
+                  <label class="form-label" for="userpassword">Password</label>
+                  <input name="password" type="password" class="form-control" id="userpassword" placeholder="Enter password">
+                </div>
+
+                <div class="form-check">
+                  <input type="checkbox" class="form-check-input" id="auth-remember-check">
+                  <label class="form-check-label" for="auth-remember-check">Remember me</label>
+                </div>
+
+                <div class="mt-3 text-end">
+                  <button class="btn btn-primary w-sm waves-effect waves-light" type="submit">Log In</button>
+                </div>
+
+
+
+                <div class="mt-4 text-center">
+                  <div class="signin-other-title">
+                    <h5 class="font-size-14 mb-3 title">Sign in with</h5>
+                  </div>
+
+
+                  <ul class="list-inline">
+                    <li class="list-inline-item">
+                      <a href="javascript:void()" class="social-list-item bg-primary text-white border-primary">
+                        <i class="mdi mdi-facebook"></i>
+                      </a>
+                    </li>
+                    <li class="list-inline-item">
+                      <a href="javascript:void()" class="social-list-item bg-info text-white border-info">
+                        <i class="mdi mdi-twitter"></i>
+                      </a>
+                    </li>
+                    <li class="list-inline-item">
+                      <a href="javascript:void()" class="social-list-item bg-danger text-white border-danger">
+                        <i class="mdi mdi-google"></i>
+                      </a>
+                    </li>
+                  </ul>
+                </div>
+
+                <div class="mt-4 text-center">
+                  <p class="mb-0">Don't have an account ? <a href="{{Route('register')}}" class="fw-medium text-primary">
+                      Signup now </a> </p>
+                </div>
+              </form>
             </div>
 
-            <div class="mt-4">
-                <x-jet-label for="password" value="{{ __('Password') }}" />
-                <x-jet-input id="password" class="block mt-1 w-full" type="password" name="password" required autocomplete="current-password" />
-            </div>
+          </div>
+        </div>
 
-            <div class="block mt-4">
-                <label for="remember_me" class="flex items-center">
-                    <x-jet-checkbox id="remember_me" name="remember" />
-                    <span class="ml-2 text-sm text-gray-600">{{ __('Remember me') }}</span>
-                </label>
-            </div>
+        <div class="mt-5 text-center">
+          <p>©
+            <script>
+              document.write(new Date().getFullYear())
+            </script> Vortex. Created with <i class="mdi mdi-heart text-danger"></i> by Ozodbek
+          </p>
+        </div>
 
-            <div class="flex items-center justify-end mt-4">
-                @if (Route::has('password.request'))
-                    <a class="underline text-sm text-gray-600 hover:text-gray-900" href="{{ route('password.request') }}">
-                        {{ __('Forgot your password?') }}
-                    </a>
-                @endif
-
-                <x-jet-button class="ml-4">
-                    {{ __('Log in') }}
-                </x-jet-button>
-            </div>
-        </form>
-    </x-jet-authentication-card>
-</x-guest-layout>
+      </div>
+    </div>
+    <!-- end row -->
+  </div>
+  <!-- end container -->
+</div>
