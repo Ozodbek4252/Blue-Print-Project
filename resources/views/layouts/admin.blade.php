@@ -24,5 +24,6 @@
 
   </div>
   @include('components.admin.scripts')
+  @stack('scripts')
 </body>
 </html>

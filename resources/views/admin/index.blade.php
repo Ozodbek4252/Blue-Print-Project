@@ -289,7 +289,8 @@
                         data-feather="trending-up"></i>$250.00</td>
                   </tr>
                   <tr>
-                    <td><img src="/assets/images/users/avatar-5.jpg" class="avatar-xs rounded-circle " alt="...">
+                    <td><img src="/assets/images/users/avatar-5.jpg" class="avatar-xs rounded-circle "
+                        alt="...">
                     </td>
                     <td>
                       <h6 class="font-size-15 mb-1 fw-normal">Lolita Hamill</h6>
@@ -300,7 +301,8 @@
                         data-feather="trending-down"></i>$110.00</td>
                   </tr>
                   <tr>
-                    <td><img src="/assets/images/users/avatar-6.jpg" class="avatar-xs rounded-circle " alt="...">
+                    <td><img src="/assets/images/users/avatar-6.jpg" class="avatar-xs rounded-circle "
+                        alt="...">
                     </td>
                     <td>
                       <h6 class="font-size-15 mb-1 fw-normal">Robert Mercer</h6>
@@ -312,7 +314,8 @@
                         data-feather="trending-up"></i>$420.00</td>
                   </tr>
                   <tr>
-                    <td><img src="/assets/images/users/avatar-7.jpg" class="avatar-xs rounded-circle " alt="...">
+                    <td><img src="/assets/images/users/avatar-7.jpg" class="avatar-xs rounded-circle "
+                        alt="...">
                     </td>
                     <td>
                       <h6 class="font-size-15 mb-1 fw-normal">Marie Kim</h6>
@@ -323,7 +326,8 @@
                         data-feather="trending-down"></i>$120.00</td>
                   </tr>
                   <tr>
-                    <td><img src="/assets/images/users/avatar-8.jpg" class="avatar-xs rounded-circle " alt="...">
+                    <td><img src="/assets/images/users/avatar-8.jpg" class="avatar-xs rounded-circle "
+                        alt="...">
                     </td>
                     <td>
                       <h6 class="font-size-15 mb-1 fw-normal">Sonya Henshaw</h6>
@@ -334,7 +338,8 @@
                         data-feather="trending-up"></i>$112.00</td>
                   </tr>
                   <tr>
-                    <td><img src="/assets/images/users/avatar-2.jpg" class="avatar-xs rounded-circle " alt="...">
+                    <td><img src="/assets/images/users/avatar-2.jpg" class="avatar-xs rounded-circle "
+                        alt="...">
                     </td>
                     <td>
                       <h6 class="font-size-15 mb-1 fw-normal">Marie Kim</h6>
@@ -345,7 +350,8 @@
                         data-feather="trending-down"></i>$120.00</td>
                   </tr>
                   <tr>
-                    <td><img src="/assets/images/users/avatar-1.jpg" class="avatar-xs rounded-circle " alt="...">
+                    <td><img src="/assets/images/users/avatar-1.jpg" class="avatar-xs rounded-circle "
+                        alt="...">
                     </td>
                     <td>
                       <h6 class="font-size-15 mb-1 fw-normal">Sonya Henshaw</h6>
@@ -712,3 +718,95 @@
 
 
 </div> <!-- container-fluid -->
+
+@push('scripts')
+  <script>
+    options = {
+      chart: {
+        height: 339,
+        type: "line",
+        stacked: !1,
+        toolbar: {
+          show: !1
+        }
+      },
+      stroke: {
+        width: [0, 2, 4],
+        curve: "smooth"
+      },
+      plotOptions: {
+        bar: {
+          columnWidth: "30%"
+        }
+      },
+      colors: ["#5b73e8", "#dfe2e6", "#f1b44c"],
+      series: [{
+          name: "Desktops",
+          type: "column",
+          data: [23, 11, 22, 27, 13, 22, 37, 21, 44, 22, 30],
+        },
+        {
+          name: "Laptops",
+          type: "area",
+          data: [44, 55, 41, 67, 22, 43, 21, 41, 56, 27, 43],
+        },
+        {
+          name: "Tablets",
+          type: "line",
+          data: [30, 25, 36, 30, 45, 35, 64, 52, 59, 36, 39],
+        },
+      ],
+      fill: {
+        opacity: [0.85, 0.25, 1],
+        gradient: {
+          inverseColors: !1,
+          shade: "light",
+          type: "vertical",
+          opacityFrom: 0.85,
+          opacityTo: 0.55,
+          stops: [0, 100, 100, 100],
+        },
+      },
+      labels: [
+        "01/01/2003",
+        "02/01/2003",
+        "03/01/2003",
+        "04/01/2003",
+        "05/01/2003",
+        "06/01/2003",
+        "07/01/2003",
+        "08/01/2003",
+        "09/01/2003",
+        "10/01/2003",
+        "11/01/2003",
+      ],
+      markers: {
+        size: 0
+      },
+      xaxis: {
+        type: "datetime"
+      },
+      yaxis: {
+        title: {
+          text: "Points"
+        }
+      },
+      tooltip: {
+        shared: !0,
+        intersect: !1,
+        y: {
+          formatter: function(e) {
+            return void 0 !== e ? e.toFixed(0) + " points" : e;
+          },
+        },
+      },
+      grid: {
+        borderColor: "#f1f1f1"
+      },
+    };
+    (chart = new ApexCharts(
+      document.querySelector("#sales-analytics-chart"),
+      options
+    )).render();
+  </script>
+@endpush
