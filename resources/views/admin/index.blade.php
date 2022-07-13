@@ -716,11 +716,29 @@
   </div>
   <!-- end row -->
 
+  {{-- @dd($data[0]->toArray()) --}}
+  {{-- @dd($data[0]->name) --}}
+
+  <div id="data" class="hidden">
+    {{ $data }}
+  </div>
 
 </div> <!-- container-fluid -->
 
 @push('scripts')
   <script>
+    var sortedData = []
+    var data = $('#data').text();
+    data = JSON.parse(data);
+    data.map(function(item) {
+      if (sortedData[item.name]) {
+        sortedData[item.name].push(item.data);
+      } else {
+        sortedData[item.name] = new Array();
+        sortedData[item.name].push(item.data);
+      }
+    })
+
     options = {
       chart: {
         height: 339,
@@ -743,17 +761,17 @@
       series: [{
           name: "Desktops",
           type: "column",
-          data: [23, 11, 22, 27, 13, 22, 37, 21, 44, 22, 30],
+          data: sortedData.desktop
         },
         {
           name: "Laptops",
           type: "area",
-          data: [44, 55, 41, 67, 22, 43, 21, 41, 56, 27, 43],
+          data: sortedData.laptop,
         },
         {
           name: "Tablets",
           type: "line",
-          data: [30, 25, 36, 30, 45, 35, 64, 52, 59, 36, 39],
+          data: sortedData.Tablets,
         },
       ],
       fill: {
