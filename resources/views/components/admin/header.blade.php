@@ -233,7 +233,7 @@
         </button>
         <div class="dropdown-menu dropdown-menu-end">
           <!-- item-->
-          <a class="dropdown-item" href="index.html#"><i
+          <a class="dropdown-item" href="{{Route('admin.profile')}}"><i
               class="uil uil-user-circle font-size-18 align-middle text-muted me-1"></i> <span
               class="align-middle">View Profile</span></a>
           <a class="dropdown-item" href="index.html#"><i

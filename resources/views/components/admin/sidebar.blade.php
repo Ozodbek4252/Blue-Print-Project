@@ -79,18 +79,25 @@
         </li>
 
         <li>
-          <a href="javascript: void(0);" 
+          <a href="javascript: void(0);"
             class="
-              {{-- has-arrow  --}}
+            @if (!count(auth()->user()->unreadnotifications) > 0) has-arrow @endif
               waves-effect">
             <i class="uil-store"></i>
-            @if(count(auth()->user()->unreadnotifications)>0)<span class="badge rounded-pill bg-primary float-end">{{count(auth()->user()->unreadnotifications)}}</span>@endif
+            @if (count(auth()->user()->unreadnotifications) > 0)
+              <span
+                class="badge rounded-pill bg-primary float-end">{{ count(auth()->user()->unreadnotifications) }}</span>
+            @endif
             <span>Messages</span>
           </a>
           <ul class="sub-menu" aria-expanded="false">
             <li><a href="{{ Route('admin.notifications') }}">
-              @if(count(auth()->user()->unreadnotifications)>0)<span class="badge rounded-pill bg-primary float-end">{{count(auth()->user()->unreadnotifications)}}</span>@endif
-              Notification</a></li>
+                @if (count(auth()->user()->unreadnotifications) > 0)
+                  <span
+                    class="badge rounded-pill bg-primary float-end">{{ count(auth()->user()->unreadnotifications) }}</span>
+                @endif
+                Notification
+              </a></li>
             <li><a href="ecommerce-product-detail.html">Product Detail</a></li>
             <li><a href="ecommerce-orders.html">Orders</a></li>
           </ul>

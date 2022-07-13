@@ -3,6 +3,7 @@ use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\MessageController;
+use App\Http\Controllers\Admin\ProfileController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Livewire\Admin\Dashboard;
 
@@ -34,11 +35,13 @@ Route::middleware([
             Route::name('admin.')->group(function () {
                 Route::get('/dashboard', Dashboard::class)->name('dashboard');
                 Route::get('/users', [UserController::class, 'index'])->name('users');
-                Route::get('/notifications', [MessageController::class, 'notifications'])->name('notifications');
-                Route::get('/notify/{id}', [MessageController::class, 'notify'])->name('notify');
-                Route::get('/markasread/{id}', [MessageController::class, 'markAsRead'])->name('markasread');
-                Route::get('/markallasread', [MessageController::class, 'markAllAsRead'])->name('markallasread');
-                
+                Route::get('/profile', [ProfileController::class, 'index'])->name('profile');
+                Route::controller(MessageController::class)->group(function () {
+                    Route::get('/notifications', 'notifications')->name('notifications');
+                    Route::get('/notify/{id}', 'notify')->name('notify');
+                    Route::get('/markasread/{id}', 'markAsRead')->name('markasread');
+                    Route::get('/markallasread', 'markAllAsRead')->name('markallasread');
+                });
             });
         });
     });
