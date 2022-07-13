@@ -29,7 +29,6 @@ Route::middleware([
     config('jetstream.auth_session'),
     'verified'
 ])->group(function () {
-
     Route::middleware(['is_admin'])->group(function(){
         Route::prefix('admin')->group(function () {
             Route::name('admin.')->group(function () {
@@ -51,3 +50,6 @@ Route::middleware([
 });
 
 
+Route::fallback(function () {
+    return view('admin.components.error404');
+});

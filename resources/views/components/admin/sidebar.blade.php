@@ -68,7 +68,7 @@
 
         <li>
           <a href="javascript: void(0);" class="has-arrow waves-effect">
-            <i class="uil-store"></i>
+            <i class="uil-shopping-cart-alt"></i>
             <span>Orders</span>
           </a>
           <ul class="sub-menu" aria-expanded="false">
