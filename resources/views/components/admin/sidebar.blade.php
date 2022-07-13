@@ -83,10 +83,10 @@
             class="
             @if (!count(auth()->user()->unreadnotifications) > 0) has-arrow @endif
               waves-effect">
-            <i class="uil-store"></i>
+            <i class="uil-comments-alt"></i>
+
             @if (count(auth()->user()->unreadnotifications) > 0)
-              <span
-                class="badge rounded-pill bg-primary float-end">{{ count(auth()->user()->unreadnotifications) }}</span>
+              <span class="badge rounded-pill bg-warning float-end">New</span>
             @endif
             <span>Messages</span>
           </a>
@@ -100,65 +100,6 @@
               </a></li>
             <li><a href="ecommerce-product-detail.html">Product Detail</a></li>
             <li><a href="ecommerce-orders.html">Orders</a></li>
-          </ul>
-        </li>
-
-        <li>
-          <a href="chat.html" class=" waves-effect">
-            <i class="uil-comments-alt"></i>
-            <span class="badge rounded-pill bg-warning float-end">New</span>
-            <span>Chat</span>
-          </a>
-        </li>
-
-        <li>
-          <a href="javascript: void(0);" class="has-arrow waves-effect">
-            <i class="uil-store"></i>
-            <span>Ecommerce</span>
-          </a>
-          <ul class="sub-menu" aria-expanded="false">
-            <li><a href="ecommerce-products.html">Products</a></li>
-            <li><a href="ecommerce-product-detail.html">Product Detail</a></li>
-            <li><a href="ecommerce-orders.html">Orders</a></li>
-            <li><a href="ecommerce-customers.html">Customers</a></li>
-            <li><a href="ecommerce-cart.html">Cart</a></li>
-            <li><a href="ecommerce-checkout.html">Checkout</a></li>
-            <li><a href="ecommerce-shops.html">Shops</a></li>
-            <li><a href="ecommerce-add-product.html">Add Product</a></li>
-          </ul>
-        </li>
-
-        <li>
-          <a href="javascript: void(0);" class="has-arrow waves-effect">
-            <i class="uil-envelope"></i>
-            <span>Email</span>
-          </a>
-          <ul class="sub-menu" aria-expanded="false">
-            <li><a href="email-inbox.html">Inbox</a></li>
-            <li><a href="email-read.html">Read Email</a></li>
-          </ul>
-        </li>
-
-        <li>
-          <a href="javascript: void(0);" class="has-arrow waves-effect">
-            <i class="uil-invoice"></i>
-            <span>Invoices</span>
-          </a>
-          <ul class="sub-menu" aria-expanded="false">
-            <li><a href="invoices-list.html">Invoice List</a></li>
-            <li><a href="invoices-detail.html">Invoice Detail</a></li>
-          </ul>
-        </li>
-
-        <li>
-          <a href="javascript: void(0);" class="has-arrow waves-effect">
-            <i class="uil-book-alt"></i>
-            <span>Contacts</span>
-          </a>
-          <ul class="sub-menu" aria-expanded="false">
-            <li><a href="contacts-grid.html">User Grid</a></li>
-            <li><a href="contacts-list.html">User List</a></li>
-            <li><a href="contacts-profile.html">Profile</a></li>
           </ul>
         </li>
 
