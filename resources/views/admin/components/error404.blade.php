@@ -18,11 +18,10 @@
                   <h4 class="text-uppercase mt-4">Sorry, page not found</h4>
                   <p class="text-muted">It will be as simple as Occidental in fact, it will be Occidental</p>
                   <div class="mt-5">
-                    @if(auth()->user()->type == 'admin')
+                    @if(auth()->check() && auth()->user()->type == 'admin')
                       <a class="btn btn-primary waves-effect waves-light" href="{{Route('admin.dashboard')}}">Back to Dashboard</a>
-                    @else
-                      <a class="btn btn-primary waves-effect waves-light" href="{{Route('home')}}">Back to Website</a>
                     @endif
+                      <a class="btn btn-primary waves-effect waves-light" href="{{Route('home')}}">Back to Website</a>
                   </div>
               </div>
               

@@ -5,6 +5,7 @@ use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\MessageController;
 use App\Http\Controllers\Admin\ProfileController;
 use App\Http\Controllers\Admin\UserController;
+use App\Http\Controllers\Front\HomeController;
 use App\Http\Livewire\Admin\Dashboard;
 
 /*
@@ -19,9 +20,7 @@ use App\Http\Livewire\Admin\Dashboard;
 */
 
 // Front Routes
-Route::get('/', function(){
-    return view('front.welcome');
-})->name('home');
+Route::get('/', [HomeController::class, 'index'])->name('home');
 
 // Admin Routes
 Route::middleware([
