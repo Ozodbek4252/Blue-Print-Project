@@ -9,8 +9,8 @@ services:
                 WWWGROUP: '${WWWGROUP}'
         image: sail-8.1/app
         ports:
-            - '${APP_PORT:-81}:80'
-            - '${VITE_PORT:-5174}:${VITE_PORT:-5174}'
+            - '${APP_PORT:-80}:80'
+            - '${VITE_PORT:-5175}:${VITE_PORT:-5175}'
         environment:
             WWWUSER: '${WWWUSER}'
             LARAVEL_SAIL: 1
@@ -46,7 +46,7 @@ services:
     redis:
         image: 'redis:alpine'
         ports:
-            - '${FORWARD_REDIS_PORT:-6378}:6378'
+            - '${FORWARD_REDIS_PORT:-6379}:6379'
         volumes:
             - 'sail-redis:/data'
         networks:
