@@ -20,10 +20,11 @@ use App\Http\Livewire\Admin\Dashboard;
 */
 
 // Front Routes
-Route::get('/', function(){
-    return App\Models\User::all();
-})->name('home');
-// Route::get('/', [HomeController::class, 'index'])->name('home');
+Route::get('/', [HomeController::class, 'index'])->name('home');
+
+// Route::get('/', function(){
+//     return App\Models\User::all();
+// })->name('home');
 
 // Admin Routes
 Route::middleware([
@@ -47,7 +48,7 @@ Route::middleware([
         });
     });
 
-    
+
 
 });
 

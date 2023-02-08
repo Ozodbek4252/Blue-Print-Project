@@ -16,11 +16,12 @@ class IsAdmin
      */
     public function handle(Request $request, Closure $next)
     {
-        if (!auth()->check() || !($request->user()->type == 'admin')) {
+        if (!auth()->check() || !($request->user()->type == 1)) {
             return redirect()->route('home');
-            return redirect()->route('login');
-            return abort(403);
+            // return redirect()->route('login');
+            // return abort(403);
         }
+        
         // if(!auth()->check() || !auth()->user()->type == 'admin') {
         //     return redirect('/');
         // }

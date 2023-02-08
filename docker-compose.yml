@@ -1,56 +1,103 @@
 # For more information: https://laravel.com/docs/sail
-version: '3'
+version: '3.8'
+
+networks:
+    nginx_network:
+        external: true
+    internal:
+
+volumes:
+    app-database:
+        driver: local
+    internal-redis:
+        driver: local
+
 services:
-    laravel.test:
-        build:
-            context: ./vendor/laravel/sail/runtimes/8.1
-            dockerfile: Dockerfile
-            args:
-                WWWGROUP: '${WWWGROUP}'
-        image: sail-8.1/app
-        ports:
-            - '${APP_PORT:-80}:80'
-            - '${VITE_PORT:-5175}:${VITE_PORT:-5175}'
-        environment:
-            WWWUSER: '${WWWUSER}'
-            LARAVEL_SAIL: 1
-            XDEBUG_MODE: '${SAIL_XDEBUG_MODE:-off}'
-            XDEBUG_CONFIG: '${SAIL_XDEBUG_CONFIG:-client_host=host.docker.internal}'
-        volumes:
-            - '.:/var/www/html'
+    app:
+        image: adhocore/phpfpm:8.1
+        container_name: app
+        working_dir: /app
+        restart: always
         networks:
-            - sail
+            - internal
+            - nginx_network
+        volumes:
+            - '.:/app'
+            - './docker/php/php-ini-overrides.ini:/etc/php/8.1/fpm/conf.d/99-overrides.ini'
+        links:
+            - mysql
         depends_on:
             - mysql
-            - redis
-    mysql:
-        image: 'mysql/mysql-server:8.0'
-        ports:
-            - '${FORWARD_DB_PORT:-3306}:3306'
-        environment:
-            MYSQL_ROOT_PASSWORD: 'password'
-            MYSQL_ROOT_HOST: "%"
-            MYSQL_DATABASE: 'blue_print'
-            MYSQL_USER: 'root'
-            MYSQL_PASSWORD: 'password'
-            MYSQL_ALLOW_EMPTY_PASSWORD: 1
-        volumes:
-            - 'sail-mysql:/var/lib/mysql'
-            - './vendor/laravel/sail/database/mysql/create-testing-database.sh:/docker-entrypoint-initdb.d/10-create-testing-database.sh'
+    nginx:
+        image: nginx:alpine
+        container_name: nginx
+        restart: always
+        working_dir: /app
         networks:
-            - sail
-        healthcheck:
-            test: ["CMD", "mysqladmin", "ping", "-p${DB_PASSWORD}"]
-            retries: 3
-            timeout: 5s
+            - internal
+        ports:
+            - "9021:80"
+        volumes:
+            - .:/app
+            - ./docker/nginx/nginx.conf:/etc/nginx/conf.d/default.conf
+        depends_on:
+            - app
+    app-composer:
+        image: composer:latest
+        container_name: app-composer
+        working_dir: /app
+        command: update --ignore-platform-reqs
+        volumes:
+            - .:/app
+        restart: on-failure
+        depends_on:
+            - app
+    mysql:
+        # image: 'mysql/mysql-server:8.0'
+        # ports:
+        #     - '${FORWARD_DB_PORT:-3306}:3306'
+        # environment:
+        #     MYSQL_ROOT_PASSWORD: 'password'
+        #     MYSQL_ROOT_HOST: "%"
+        #     MYSQL_DATABASE: 'app'
+        #     MYSQL_USER: 'root'
+        #     MYSQL_PASSWORD: 'password'
+        #     MYSQL_ALLOW_EMPTY_PASSWORD: 1
+        # volumes:
+        #     - .:/app
+        #     - ./app-database:/var/lib/postgresql/data
+        # networks:
+        #     - internal
+        # healthcheck:
+        #     test: ["CMD", "mysqladmin", "ping", "-p${DB_PASSWORD}"]
+        #     retries: 3
+        #     timeout: 5s
+        image: mariadb:latest
+        restart: always
+        container_name: database
+        working_dir: /app
+        networks:
+            - internal
+            - nginx_network
+        command: mysqld --skip-grant-tables
+        environment:
+            - MYSQL_ROOT_PASSWORD=password
+            - MYSQL_DATABASE=app
+            - MYSQL_USER=root
+            - MYSQL_PASSWORD=password
+        volumes:
+            - .:/app
+            - ./app-database:/var/lib/mysql
+        ports:
+            - '8000:3306'
     redis:
         image: 'redis:alpine'
         ports:
             - '${FORWARD_REDIS_PORT:-6379}:6379'
         volumes:
-            - 'sail-redis:/data'
+            - 'internal-redis:/data'
         networks:
-            - sail
+            - internal
         healthcheck:
             test: ["CMD", "redis-cli", "ping"]
             retries: 3
@@ -63,14 +110,7 @@ services:
             - PMA_HOST=mysql
             - PMA_PORT=3306
         networks:
-            - sail
+            - internal
         ports:
             - 8002:80
-networks:
-    sail:
-        driver: bridge
-volumes:
-    sail-mysql:
-        driver: local
-    sail-redis:
-        driver: local
+
