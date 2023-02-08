@@ -8,9 +8,10 @@ use Illuminate\Http\Request;
 
 class UserController extends Controller
 {
-    public function index(){
-        $users = User::where('type', 'user')->paginate(10);
-        $num = 0;
-        return view("admin.users.index", ['users' => $users, 'num' => $num]);
+    public function index()
+    {
+        $users = User::where('type', 0)->paginate(10);
+
+        return view("admin.users.index", ['users' => $users]);
     }
 }

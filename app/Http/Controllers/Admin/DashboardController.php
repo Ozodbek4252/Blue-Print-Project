@@ -8,8 +8,10 @@ use Illuminate\Http\Request;
 
 class DashboardController extends Controller
 {
-    public function index(){
+    public function index()
+    {
         $data = Data::all();
-        return view('admin.index')->layout('layouts.admin');
+        
+        return view('admin.index', ['data' => $data]);
     }
 }
